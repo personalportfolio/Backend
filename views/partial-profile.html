@@ -1,0 +1,24 @@
+
+
+
+
+<div class="profile-card">
+        <div class="image-container">
+            <div class="title">
+                <h2>${userData.first_name} ${userData.last_name}</h2>
+            </div>
+        </div>
+        <div class="main-container">
+            <p><i class="fa fa-envelope info"></i>${userData.email_address}</p>
+            <hr>
+            <div class='box' name='box-shadow'>
+                    <form action="/profile" method="POST">
+                        <label>
+                            <textarea class="textarea is-medium" placeholder="Tell me about yourself" rows="7"></textarea>
+                        </label><br />
+
+                <button type="submit">Update</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<section class='section'>
+        <h2><a href=${resourceData.url}>${resourceData.title} </a>
+            : ${resourceData.type} </h2>
+        <ul>
+            ${resourceReviews.map(review => `
+                <li>
+                    ${review.stars} Stars: ${review.content}
+                </li>
+                `).join('')}
+        </ul>
+    </section>
+    
+    <form action="/resources/${resourceData.id}/add-review" method="POST">
+        <label>
+            Stars
+            <input type="text" aria-placeholder="Stars" name="stars">
+        </label>
+        <label>
+            Content
+            <input type="text" aria-placeholder="Content" name="content">
+        </label>
+        <input type="hidden" name="user_id" value=${user_id} />
+        <button type="submit">Add Review</button>
+    </form>
+    

@@ -1,0 +1,108 @@
+${!!isLoggedIn ? `
+<h2>Welcome ${first_name}!</h2>
+` : `
+<h2>Welcome!</h2>
+`}
+
+
+
+
+
+<section>
+    <ul>
+        ${recentActivity.map( activity => `
+            <li>
+                <a href='./profile'>
+                ${activity.first_name} ${activity.last_name}</a>
+                spent ${activity.hours_spent} hours ${activity.activity_name}</li>
+        `).join('')}
+    </ul>
+</section>
+
+
+<section>
+    <form action="/add-activity" method="POST">
+        <label> Resource
+            <select name="resource_id">
+                ${resourceData.map(resource => `
+                    <option value=${resource.id}>
+                        ${resource.title}
+                    </option>
+                    `).join('')}
+            </select>
+        
+        </label>
+        <label>
+            Activity Name
+            <input type="text" aria-placeholder="Activity Name" name="activity_name">
+        </label>
+        <label>
+            Activity Description
+            <input type="text" aria-placeholder="Activity Description" name="activity_description">
+        </label>
+        <label>
+            Date Completed
+            <input type="text" aria-placeholder="Date Completed" name="date_completed">
+        </label>
+        <label>
+            Hours Spent
+            <input type="text" aria-placeholder="Hours Spent" name="hours_spent">
+        </label>
+        <input type="hidden" name="user_id" value=${user_id} />
+        <button type="submit">Add Activity Log</button>
+    </form>
+</section> 
+
+
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Code.log | ${title}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <nav class="menu--main">
+            <ul> class="navbar-nav" 
+                ${!!isLoggedIn ? `
+                    <li><a href="/users/logout">Logout</a></li>
+                    <li><a href="/profile">Profile</a></li>
+                    <li><a href="/">Home</a></li>
+            </ul>
+                ` : `
+                <ul>
+                    <li><a href="/users/login">Login</a></li>
+                    <li><a href="/users/signup">Sign Up</a></li>
+                    <li><a href="/">Home</a></li>
+                `}
+            </ul>
+        </nav>
+        <h1 class="container">${title}</h1>
+        <main class="container">${partial}</main>
+    </body>
+</html>
+
+
+
+
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+        <a href="#" class="navbar-brand">Console.log</a>
+        <ul  class="navbar-nav ml-auto">
+            <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="#"
+            class="nav-link">users/logout</a></li>
+            <li class="nav-item"><a href="#"
+            class="nav-link">Profile</a></li>
+            <li class="nav-item"><a href="#"
+            class="nav-link">Users/login</a></li>
+            <li class="nav-item"><a href="#"
+            class="nav-link">users/signup"</a></li>
+
+        </ul>
+        </nav>  
+      
+       
